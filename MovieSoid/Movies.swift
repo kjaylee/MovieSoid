@@ -53,8 +53,8 @@ extension MoviesInfo: ListDiffable {
 extension MoviesInfo {
     func attrStringForResult(withSize size: CGFloat) -> NSAttributedString {
         let attr = [
-            NSForegroundColorAttributeName : UIColor.white,
-            NSFontAttributeName: UIFont.boldSystemFont(ofSize: size)
+            NSAttributedString.Key.foregroundColor : UIColor.white,
+            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: size)
         ]
         return NSAttributedString(string: String(format: "%d results", self.totalResults) , attributes: attr)
     }
@@ -123,24 +123,24 @@ extension Movies {
     // MARK: - Attributed Strings
     func attrStringForTitle(withSize size: CGFloat) -> NSAttributedString {
         let attr = [
-            NSForegroundColorAttributeName : UIColor.white,
-            NSFontAttributeName: UIFont.boldSystemFont(ofSize: size)
+            NSAttributedString.Key.foregroundColor : UIColor.white,
+            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: size)
         ]
         return NSAttributedString(string: self.title, attributes: attr)
     }
 
     func attrStringForDetailTitle(withSize size: CGFloat) -> NSAttributedString {
         let attr = [
-            NSForegroundColorAttributeName : UIColor.white,
-            NSFontAttributeName: UIFont.boldSystemFont(ofSize: size)
+            NSAttributedString.Key.foregroundColor : UIColor.white,
+            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: size)
         ]
         return NSAttributedString(string: self.title, attributes: attr)
     }
 
     func attrStringForDetailGenres(withSize size: CGFloat) -> NSAttributedString {
         let attr = [
-            NSForegroundColorAttributeName : UIColor.lightGray,
-            NSFontAttributeName: UIFont.systemFont(ofSize: size)
+            NSAttributedString.Key.foregroundColor : UIColor.lightGray,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: size)
         ]
         let strs = [self.timeInfo(), self.genresInfo()].filter { $0.characters.count > 0 }
         let genresString = strs.joined(separator: " • ")
@@ -149,8 +149,8 @@ extension Movies {
 
     func attrStringForYear(withSize size: CGFloat) -> NSAttributedString {
         let attr = [
-            NSForegroundColorAttributeName : UIColor.lightGray,
-            NSFontAttributeName: UIFont.boldSystemFont(ofSize: size)
+            NSAttributedString.Key.foregroundColor : UIColor.lightGray,
+            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: size)
         ]
         let year = self.releaseDate.components(separatedBy: "-").first!
         return NSAttributedString(string: year, attributes: attr)
@@ -158,16 +158,16 @@ extension Movies {
 
     func attrStringForRate(withSize size: CGFloat) -> NSAttributedString {
         let attr = [
-            NSForegroundColorAttributeName : UIColor.white,
-            NSFontAttributeName: UIFont.boldSystemFont(ofSize: size)
+            NSAttributedString.Key.foregroundColor : UIColor.white,
+            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: size)
         ]
         return NSAttributedString(string: String(format: "%.1f", self.voteAverage), attributes: attr)
     }
 
     func attrStringForVoteCount(withSize size: CGFloat) -> NSAttributedString {
         let attr = [
-            NSForegroundColorAttributeName : UIColor.lightGray,
-            NSFontAttributeName: UIFont.systemFont(ofSize: size)
+            NSAttributedString.Key.foregroundColor : UIColor.lightGray,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: size)
         ]
         if let voteCount = self.voteCount, voteCount > 0 {
             return NSAttributedString(string: "\(voteCount) votes", attributes: attr)
@@ -179,16 +179,16 @@ extension Movies {
 
     func attrStringForOverview(withSize size: CGFloat) -> NSAttributedString {
         let attr = [
-            NSForegroundColorAttributeName : UIColor.white,
-            NSFontAttributeName: UIFont.boldSystemFont(ofSize: size)
+            NSAttributedString.Key.foregroundColor : UIColor.white,
+            NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: size)
         ]
         return NSAttributedString(string: self.overview, attributes: attr)
     }
 
     func attrStringForDetailOverview(withSize size: CGFloat) -> NSAttributedString {
         let attr = [
-            NSForegroundColorAttributeName : UIColor.white,
-            NSFontAttributeName: UIFont.systemFont(ofSize: size)
+            NSAttributedString.Key.foregroundColor : UIColor.white,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: size)
         ]
         return NSAttributedString(string: self.overview, attributes: attr)
     }

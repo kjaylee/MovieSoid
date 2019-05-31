@@ -29,16 +29,16 @@ class Reviews: Mappable {
 extension Reviews {
     func attrStringForAuthor(withSize size: CGFloat) -> NSAttributedString {
         let attr = [
-            NSForegroundColorAttributeName : Constants.Color.actionColor,
-            NSFontAttributeName: UIFont.systemFont(ofSize: size)
+            NSAttributedString.Key.foregroundColor : Constants.Color.actionColor,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: size)
         ]
         return NSAttributedString(string: "@\(self.author!)", attributes: attr)
     }
 
     func attrStringForContent(withSize size: CGFloat) -> NSAttributedString {
         let attr = [
-            NSForegroundColorAttributeName : UIColor.lightGray,
-            NSFontAttributeName: UIFont.systemFont(ofSize: size)
+            NSAttributedString.Key.foregroundColor : UIColor.lightGray,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: size)
         ]
         return NSAttributedString(string: self.content, attributes: attr)
     }

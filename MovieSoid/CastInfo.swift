@@ -45,8 +45,8 @@ class Cast: Mappable {
 extension Cast {
     func attrStringForName(withSize size: CGFloat) -> NSAttributedString {
         let attr = [
-            NSForegroundColorAttributeName : UIColor.white,
-            NSFontAttributeName: UIFont.systemFont(ofSize: size)
+            NSAttributedString.Key.foregroundColor : UIColor.white,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: size)
         ]
         return NSAttributedString(string: self.name, attributes: attr)
     }
@@ -56,9 +56,9 @@ extension Cast {
         paragraphStyle.alignment = .center
         paragraphStyle.lineBreakMode = .byWordWrapping
         let attr = [
-            NSForegroundColorAttributeName : UIColor.lightGray,
-            NSFontAttributeName: UIFont.systemFont(ofSize: size),
-            NSParagraphStyleAttributeName: paragraphStyle
+            NSAttributedString.Key.foregroundColor : UIColor.lightGray,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: size),
+            NSAttributedString.Key.paragraphStyle: paragraphStyle
         ]
         return NSAttributedString(string: self.character, attributes: attr)
     }

@@ -17,8 +17,8 @@ class HorizalDetailCell: ASCellNode {
     lazy var titleTextNode: ASTextNode = {
         let node = ASTextNode()
         let attrs = [
-            NSForegroundColorAttributeName : UIColor.white,
-            NSFontAttributeName: UIFont.systemFont(ofSize: Constants.CellLayout.FontSize)
+            NSAttributedString.Key.foregroundColor : UIColor.white,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: Constants.CellLayout.FontSize)
         ]
         node.attributedText = NSAttributedString(string: "", attributes: attrs)
         return node
@@ -27,8 +27,8 @@ class HorizalDetailCell: ASCellNode {
     lazy var seeAllTextNode: ASTextNode = {
         let node = ASTextNode()
         let attrs = [
-            NSForegroundColorAttributeName : UIColor.lightGray,
-            NSFontAttributeName: UIFont.systemFont(ofSize: 13)
+            NSAttributedString.Key.foregroundColor : UIColor.lightGray,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13)
         ]
         node.attributedText = NSAttributedString(string: "See All〉", attributes: attrs)
         return node
@@ -56,14 +56,14 @@ class HorizalDetailCell: ASCellNode {
         self.controller = controller
         self.heightForNode = height
         super.init()
-        self.titleTextNode.attributedText = NSAttributedString(string: title, attributes: [NSFontAttributeName: UIFont.boldSystemFont(ofSize: 14), NSForegroundColorAttributeName: UIColor.white])
+        self.titleTextNode.attributedText = NSAttributedString(string: title, attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.white])
         self.automaticallyManagesSubnodes = true
     }
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         let headerStackSpec = ASStackLayoutSpec(direction: .horizontal, spacing: 10, justifyContent: .spaceBetween, alignItems: .center, children:  [self.titleTextNode, self.seeAllTextNode])
         headerStackSpec.style.width = ASDimension(unit: .points, value: UIScreen.main.bounds.size.width)
-        let headerInsetSpec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(12, 8, 12, 8), child: headerStackSpec)
+        let headerInsetSpec = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 12, left: 8, bottom: 12, right: 8), child: headerStackSpec)
 
         let headerBackgroundNode = ASDisplayNode()
         headerBackgroundNode.backgroundColor = Constants.Color.headerColor

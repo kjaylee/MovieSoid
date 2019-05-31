@@ -37,7 +37,7 @@ class MovieTableCell: MovieBaseCell {
         infoStackSpec.style.flexGrow = 1.0
         infoStackSpec.style.flexShrink = 1.0
         let mainStackSpec = ASStackLayoutSpec(direction: .horizontal, spacing: 5, justifyContent: .start, alignItems: .start, children: [self.posterImageNode, infoStackSpec])
-        let mainStackInsetSpec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(8, 8, 8, 8), child: mainStackSpec)
+        let mainStackInsetSpec = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8), child: mainStackSpec)
 
         self.seperatorNode.style.preferredSize = CGSize(width: constrainedSize.min.width, height: 0.5)
 

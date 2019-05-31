@@ -38,6 +38,8 @@ extension ImagesDetailInfoCell: ListAdapterDataSource {
 }
 
 class ImageSection: ListSectionController, ASSectionController {
+    
+    
 
     let heightCollectionNode: CGFloat
     init(heightCollectionNode: CGFloat) {
@@ -70,6 +72,11 @@ class ImageSection: ListSectionController, ASSectionController {
 
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         return ASIGListSectionControllerMethods.cellForItem(at: index, sectionController: self)
+    }
+    func nodeForItem(at index: Int) -> ASCellNode {
+        return ASCellNode(viewBlock: { () -> UIView in
+            return ASIGListSectionControllerMethods.cellForItem(at: index, sectionController: self)
+        })
     }
 }
 

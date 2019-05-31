@@ -9,7 +9,7 @@
 import Foundation
 
 struct Helper {
-    static func attrString(attrs: [String: Any], text: String) -> NSAttributedString {
+    static func attrString(attrs: [NSAttributedString.Key: Any], text: String) -> NSAttributedString {
         return NSAttributedString(string: text, attributes: attrs)
     }
 }

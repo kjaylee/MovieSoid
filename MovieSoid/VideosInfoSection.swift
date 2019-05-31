@@ -11,10 +11,11 @@ import AsyncDisplayKit
 import IGListKit
 
 class VideosInfoSection: ListSectionController, ASSectionController {
+    
 
     override init() {
         super.init()
-        self.inset = UIEdgeInsetsMake(10, 0, 20, 0)
+        self.inset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
     }
 
     var object: VideosInfo?
@@ -27,6 +28,12 @@ class VideosInfoSection: ListSectionController, ASSectionController {
         return {
             return VideosDetailInfoCell(model: videosInfo, controller: self.viewController)
         }
+    }
+    func nodeForItem(at index: Int) -> ASCellNode {
+        guard let videosInfo = object else {
+            return ASCellNode()
+        }
+        return VideosDetailInfoCell(model: videosInfo, controller: self.viewController)
     }
 
     override func numberOfItems() -> Int {

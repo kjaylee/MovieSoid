@@ -52,7 +52,7 @@ class DetailMovieController: ASViewController<ASCollectionNode> {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "ic_back"), style: .plain, target: self, action: #selector(back))
     }
 
-    func back() {
+    @objc func back() {
         self.navigationController?.popViewController(animated: true)
     }
 

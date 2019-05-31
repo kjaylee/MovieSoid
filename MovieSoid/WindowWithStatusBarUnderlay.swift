@@ -23,7 +23,7 @@ class WindowWithStatusBarUnderlay: UIWindow {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        self.bringSubview(toFront: self.statusBarOpaqueUnderlayView)
+        self.bringSubviewToFront(self.statusBarOpaqueUnderlayView)
         var statusBarFrame = CGRect.zero
         statusBarFrame.size.width = UIScreen.main.bounds.size.width
         statusBarFrame.size.height = UIApplication.shared.statusBarFrame.size.height

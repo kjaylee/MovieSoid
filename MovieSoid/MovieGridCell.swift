@@ -33,7 +33,7 @@ class MovieGridCell: MovieBaseCell {
         let mainStackSpec = ASStackLayoutSpec(direction: .vertical, spacing: 2, justifyContent: .center, alignItems: .center, children: children)
         mainStackSpec.style.width = ASDimension(unit: .points, value: width)
 
-        let insetSpec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(0, 0, 8, 0), child: mainStackSpec)
+        let insetSpec = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 0, bottom: 8, right: 0), child: mainStackSpec)
 
         return insetSpec
     }

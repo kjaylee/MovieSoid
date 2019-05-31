@@ -28,8 +28,8 @@ class MovieDetailInfoCell: ASCellNode {
     lazy var addWatchlistButtonNode: ASButtonNode = {
         let node = ASButtonNode()
         let attrs = [
-            NSForegroundColorAttributeName : UIColor.white,
-            NSFontAttributeName: UIFont.systemFont(ofSize: Constants.CellLayout.WatchListButtonFontSize)
+            NSAttributedString.Key.foregroundColor : UIColor.white,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: Constants.CellLayout.WatchListButtonFontSize)
         ]
         node.setAttributedTitle(Helper.attrString(attrs: attrs, text: "+ Add to Watchlist"), for: .normal)
         node.backgroundColor = Constants.Color.actionColor
@@ -81,7 +81,7 @@ class MovieDetailInfoCell: ASCellNode {
 
         let titleStackSpec = ASStackLayoutSpec(direction: .vertical, spacing: 3, justifyContent: .start, alignItems: .start, children: [self.titleTextNode, self.genresTextNode])
         titleStackSpec.style.width = ASDimension(unit: .points, value: UIScreen.main.bounds.size.width)
-        let titleInsetsSpec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(8, 8, 8, 8), child: titleStackSpec)
+        let titleInsetsSpec = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8), child: titleStackSpec)
 
 
         let titleBackgroundNode = ASDisplayNode()
@@ -92,7 +92,7 @@ class MovieDetailInfoCell: ASCellNode {
 
         let overviewStackSpec = ASStackLayoutSpec(direction: .vertical, spacing: 15, justifyContent: .start, alignItems: .start, children: [self.overviewTextNode, self.addWatchlistButtonNode])
         overviewStackSpec.style.width = ASDimension(unit: .points, value: UIScreen.main.bounds.size.width)
-        let overviewInsetsSpec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(8, 8, 8, 8), child: overviewStackSpec)
+        let overviewInsetsSpec = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8), child: overviewStackSpec)
 
         let overviewBackgroundNode = ASDisplayNode()
         overviewBackgroundNode.backgroundColor = Constants.Color.primaryColor
@@ -110,7 +110,7 @@ class MovieDetailInfoCell: ASCellNode {
         var rateBackgroundSpec: ASBackgroundLayoutSpec?
         if rateStackChildren.count > 0 {
             let rateStackSpec = ASStackLayoutSpec(direction: .horizontal, spacing: 5, justifyContent: .start, alignItems: .center, children: [self.rateImageNode, ASStackLayoutSpec(direction: .vertical, spacing: 0, justifyContent: .start, alignItems: .center, children: rateStackChildren)])
-            let rateInsetSpec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(8, 8, 8, 0), child: rateStackSpec)
+            let rateInsetSpec = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 0), child: rateStackSpec)
 
             let rateBackgroundNode = ASDisplayNode()
             rateBackgroundNode.borderWidth = 1.0
@@ -119,7 +119,7 @@ class MovieDetailInfoCell: ASCellNode {
             rateBackgroundSpec = ASBackgroundLayoutSpec(child: rateInsetSpec, background: rateBackgroundNode)
         }
 
-        let rateItInsetSpec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(8, 0, 8, 0), child: self.rateButtonNode)
+        let rateItInsetSpec = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 8, left: 0, bottom: 8, right: 0), child: self.rateButtonNode)
         let rateItBackgroundNode = ASDisplayNode()
         rateItBackgroundNode.borderWidth = 1.0
         rateItBackgroundNode.borderColor = Constants.Color.headerColor.cgColor

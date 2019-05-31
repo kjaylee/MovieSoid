@@ -38,6 +38,7 @@ extension VideosDetailInfoCell: ListAdapterDataSource {
 }
 
 class VideoSection: ListSectionController, ASSectionController {
+    
 
     let heightCollectionNode: CGFloat
     init(heightCollectionNode: CGFloat) {
@@ -75,6 +76,11 @@ class VideoSection: ListSectionController, ASSectionController {
 
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         return ASIGListSectionControllerMethods.cellForItem(at: index, sectionController: self)
+    }
+    func nodeForItem(at index: Int) -> ASCellNode {
+        return ASCellNode { () -> UIView in
+            return ASIGListSectionControllerMethods.cellForItem(at: index, sectionController: self)
+        }
     }
 }
 
@@ -123,7 +129,7 @@ class VideoCell: ASCellNode {
         self.delegate = delegate
         self.model = model
         super.init()
-        self.typeTextNode.attributedText = Helper.attrString(attrs: [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName : UIFont.boldSystemFont(ofSize: 10)], text: model.type)
+        self.typeTextNode.attributedText = Helper.attrString(attrs: [NSAttributedString.Key(rawValue: NSAttributedString.Key.foregroundColor.rawValue): UIColor.white, NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 10)], text: model.type)
         if let videoKey = model.key {
             self.thumnailVideoImageNode.url = URL(string: Constants.URL.ThumbnailBaseURL + videoKey + "/0.jpg")
         }
@@ -139,7 +145,7 @@ class VideoCell: ASCellNode {
         let width = self.height * 16.0 / 9
         self.thumnailVideoImageNode.style.preferredSize = CGSize(width: width, height: self.height)
 
-        let typeInsetSpec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(0, 5, 5, 0), child: self.typeTextNode)
+        let typeInsetSpec = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 0, left: 5, bottom: 5, right: 0), child: self.typeTextNode)
         let typeRelSpec = ASRelativeLayoutSpec(horizontalPosition: .start, verticalPosition: .end, sizingOption: .minimumSize, child: typeInsetSpec)
         let typeOverlaySpec = ASOverlayLayoutSpec(child: self.thumnailVideoImageNode, overlay: typeRelSpec)
         let playButtonCenterSpec = ASCenterLayoutSpec(centeringOptions: .XY, sizingOptions: .minimumXY, child: self.playButtonNode)

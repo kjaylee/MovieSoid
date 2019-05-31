@@ -42,7 +42,7 @@ class MoviesViewController: ASViewController<ASCollectionNode> {
     private func setupViews() {
         self.collectionNode.delegate = self
         self.collectionNode.dataSource = self
-        self.collectionNode.registerSupplementaryNode(ofKind: UICollectionElementKindSectionHeader)
+        self.collectionNode.registerSupplementaryNode(ofKind: UICollectionView.elementKindSectionHeader)
         self.collectionNode.view.leadingScreensForBatching = 1.0
         self.collectionNode.backgroundColor = Constants.Color.primaryColor
         self.title = "DISCOVER"
@@ -221,7 +221,7 @@ extension MoviesViewController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsetsMake(8, 8, 8, 8)
+        return UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
 
     }
 }

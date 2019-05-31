@@ -34,8 +34,8 @@ class ReviewsCell: ASCellNode {
         node.style.flexShrink = 1
         node.style.flexGrow = 1
         node.truncationAttributedText = Helper.attrString(attrs: [
-                NSForegroundColorAttributeName : UIColor.white,
-                NSFontAttributeName: UIFont.systemFont(ofSize: 13)], text: "See More...")
+            NSAttributedString.Key.foregroundColor : UIColor.white,
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 13)], text: "See More...")
         node.truncationMode = NSLineBreakMode.byTruncatingTail
         node.maximumNumberOfLines = 10
         node.isUserInteractionEnabled =  true
@@ -67,7 +67,7 @@ class ReviewsCell: ASCellNode {
 
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         let reviewStackSpec = ASStackLayoutSpec(direction: .vertical, spacing: 5, justifyContent: .start, alignItems: .start, children: [self.usernameTextNode, self.contentTextNode])
-        let mainInsetSpec = ASInsetLayoutSpec(insets: UIEdgeInsetsMake(8, 8, 8, 8), child: reviewStackSpec)
+        let mainInsetSpec = ASInsetLayoutSpec(insets: UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8), child: reviewStackSpec)
 
         var mainStackChildren: [ASLayoutElement] = [mainInsetSpec]
         if !self.hiddenSeperator {
@@ -112,9 +112,9 @@ extension ASTextNode {
             detector?.enumerateMatches(in: text, range: range) {
                 (result, _, _) in
                 if let fixedRange = result?.range {
-                    mutableString.addAttribute(NSUnderlineColorAttributeName, value: highLightColor, range: fixedRange)
-                    mutableString.addAttribute(NSLinkAttributeName, value: result?.url, range: fixedRange)
-                    mutableString.addAttribute(NSForegroundColorAttributeName, value: highLightColor, range: fixedRange)
+                    mutableString.addAttribute(NSAttributedString.Key.underlineColor, value: highLightColor, range: fixedRange)
+                    mutableString.addAttribute(NSAttributedString.Key.link, value: result?.url as Any, range: fixedRange)
+                    mutableString.addAttribute(NSAttributedString.Key.foregroundColor, value: highLightColor, range: fixedRange)
                 }
             }
             self.attributedText = mutableString

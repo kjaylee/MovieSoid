@@ -11,9 +11,11 @@ import AsyncDisplayKit
 import IGListKit
 
 class SimilarInfoSection: ListSectionController, ASSectionController {
+   
+    
     override init() {
         super.init()
-        self.inset = UIEdgeInsetsMake(10, 0, 20, 0)
+        self.inset = UIEdgeInsets(top: 10, left: 0, bottom: 20, right: 0)
     }
 
     var object: MoviesInfo?
@@ -44,6 +46,11 @@ class SimilarInfoSection: ListSectionController, ASSectionController {
 
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         return ASIGListSectionControllerMethods.cellForItem(at: index, sectionController: self)
+    }
+    func nodeForItem(at index: Int) -> ASCellNode {
+        return ASCellNode(viewBlock: { () -> UIView in
+            return ASIGListSectionControllerMethods.cellForItem(at: index, sectionController: self)
+        })
     }
 }
 

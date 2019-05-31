@@ -14,12 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var restrictRotation: Bool = true
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
         UINavigationBar.appearance().isTranslucent = true
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().barTintColor = Constants.Color.headerColor
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:Constants.Color.actionColor]
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:Constants.Color.actionColor]
 
         window = WindowWithStatusBarUnderlay(frame: UIScreen.main.bounds)
 //        let rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()

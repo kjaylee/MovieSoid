@@ -11,10 +11,11 @@ import AsyncDisplayKit
 import IGListKit
 
 class CastInfoSection: ListSectionController, ASSectionController {
+    
 
     override init() {
         super.init()
-        self.inset = UIEdgeInsetsMake(20, 0, 10, 0)
+        self.inset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
     }
 
     var object: CastInfo?
@@ -45,5 +46,10 @@ class CastInfoSection: ListSectionController, ASSectionController {
 
     override func cellForItem(at index: Int) -> UICollectionViewCell {
         return ASIGListSectionControllerMethods.cellForItem(at: index, sectionController: self)
+    }
+    func nodeForItem(at index: Int) -> ASCellNode {
+        return ASCellNode(viewBlock: { () -> UIView in
+            return ASIGListSectionControllerMethods.cellForItem(at: index, sectionController: self)
+        })
     }
 }
